@@ -1,0 +1,23 @@
+MVI B,00
+MVI C,00
+MVI D,00
+LXI H,100    ;100(memory add where binary number is stored)
+MVI B,64H
+MOV A,M
+K: SUB B
+JC L1
+INR D
+JMP K
+L1: ADD B
+MVI B,0AH
+K2: SUB B
+JC L2
+INR C
+JMP K2
+L2: ADD B
+STA 103
+MOV A,C
+STA 102
+MOV A,D
+STA 101
+HLT
